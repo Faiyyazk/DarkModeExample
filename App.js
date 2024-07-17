@@ -1,24 +1,35 @@
-import React from 'react';
-import {useColorScheme} from 'react-native';
+import React, {useEffect} from 'react';
+import {StatusBar, useColorScheme} from 'react-native';
 
-import {
-  DarkTheme,
-  DefaultTheme,
-  NavigationContainer,
-} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import TestScreen from './src/features/TestScreen';
+import HomeScreen from './src/features/HomeScreen';
+import {COLORS} from './src/utils/colors';
 
 function App() {
   const Stack = createNativeStackNavigator();
   const colorScheme = useColorScheme();
 
+  useEffect(() => {
+    StatusBar.setBackgroundColor('transparent');
+    StatusBar.setTranslucent(true);
+  }, []);
+
   return (
     <NavigationContainer
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      theme={{
+        dark: colorScheme === 'dark',
+        colors: COLORS[colorScheme ?? 'dark'],
+      }}>
       <Stack.Navigator>
-        <Stack.Screen name="TestScreen" component={TestScreen} />
+        <Stack.Screen
+          name="HomeScreen"
+          component={HomeScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
