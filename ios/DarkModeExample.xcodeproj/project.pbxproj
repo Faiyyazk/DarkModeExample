@@ -15,6 +15,10 @@
 		67FC38E52D7F8B63040B83D6 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1BE80A1CB147C9F97BAAEA9E /* PrivacyInfo.xcprivacy */; };
 		7699B88040F8A987B510C191 /* libPods-DarkModeExample-DarkModeExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-DarkModeExample-DarkModeExampleTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		7F671A0B18F143088890E87C /* AlbertSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD173A4BD7A5428BA26F6D15 /* AlbertSans-Bold.ttf */; };
+		2FEFD8EDC3DB4BFAA7871D1E /* AlbertSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0DDDDF076FE4905B551F2EE /* AlbertSans-Medium.ttf */; };
+		F1A4DD3D6F3749DC9EEBD3F4 /* AlbertSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7E18D1BBB3547CC85C12A64 /* AlbertSans-Regular.ttf */; };
+		C1B398472C3C476CACED803B /* AlbertSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C37F329927684E86A55F866D /* AlbertSans-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = DarkModeExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-DarkModeExample-DarkModeExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DarkModeExample-DarkModeExampleTests.release.xcconfig"; path = "Target Support Files/Pods-DarkModeExample-DarkModeExampleTests/Pods-DarkModeExample-DarkModeExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		FD173A4BD7A5428BA26F6D15 /* AlbertSans-Bold.ttf */ = {isa = PBXFileReference; name = "AlbertSans-Bold.ttf"; path = "../assets/fonts/AlbertSans-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E0DDDDF076FE4905B551F2EE /* AlbertSans-Medium.ttf */ = {isa = PBXFileReference; name = "AlbertSans-Medium.ttf"; path = "../assets/fonts/AlbertSans-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D7E18D1BBB3547CC85C12A64 /* AlbertSans-Regular.ttf */ = {isa = PBXFileReference; name = "AlbertSans-Regular.ttf"; path = "../assets/fonts/AlbertSans-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C37F329927684E86A55F866D /* AlbertSans-SemiBold.ttf */ = {isa = PBXFileReference; name = "AlbertSans-SemiBold.ttf"; path = "../assets/fonts/AlbertSans-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +135,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				F28160A82CC5421B85889230 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -152,6 +161,18 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		F28160A82CC5421B85889230 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				FD173A4BD7A5428BA26F6D15 /* AlbertSans-Bold.ttf */,
+				E0DDDDF076FE4905B551F2EE /* AlbertSans-Medium.ttf */,
+				D7E18D1BBB3547CC85C12A64 /* AlbertSans-Regular.ttf */,
+				C37F329927684E86A55F866D /* AlbertSans-SemiBold.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -249,6 +270,10 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				67FC38E52D7F8B63040B83D6 /* PrivacyInfo.xcprivacy in Resources */,
+				7F671A0B18F143088890E87C /* AlbertSans-Bold.ttf in Resources */,
+				2FEFD8EDC3DB4BFAA7871D1E /* AlbertSans-Medium.ttf in Resources */,
+				F1A4DD3D6F3749DC9EEBD3F4 /* AlbertSans-Regular.ttf in Resources */,
+				C1B398472C3C476CACED803B /* AlbertSans-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

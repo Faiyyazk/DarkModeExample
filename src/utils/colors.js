@@ -17,6 +17,7 @@ const light = {
   netural800: '#202D3C',
   netural900: '#18212B',
   blue: '#0090FA',
+  bottomBar: '#FFFFFF',
   ...commonColors,
 };
 
@@ -24,6 +25,7 @@ const dark = {
   background: '#12181E',
   netural800: '#F5F6F6',
   netural900: '#FFFFFF',
+  bottomBar: '#18212B',
   ...commonColors,
 };
 
