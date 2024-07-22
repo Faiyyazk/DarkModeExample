@@ -278,8 +278,8 @@ function HomeScreen() {
             </TouchableOpacity>
             <TouchableOpacity
               style={[
-                theme.paddingTop16,
-                theme.paddingBottom16,
+                theme.paddingBottom11,
+                theme.paddingTop11,
                 theme.paddingLeft12,
                 theme.paddingRight12,
                 theme.marginLeft12,
@@ -402,7 +402,7 @@ function HomeScreen() {
                   theme.flex1,
                   {color: colors.quickLinkTextColor},
                 ]}>
-                Building Updates
+                {`Building\nUpdates`}
               </Text>
             </View>
             <View style={theme.marginLeft12} />
@@ -428,7 +428,7 @@ function HomeScreen() {
                   theme.flex1,
                   {color: colors.quickLinkTextColor},
                 ]}>
-                Discover Amenities
+                {`Discover\nAmenities`}
               </Text>
             </View>
           </View>
@@ -462,7 +462,7 @@ function HomeScreen() {
                   theme.flex1,
                   {color: colors.quickLinkTextColor},
                 ]}>
-                Explore Retailers
+                {`Explore\nRetailers`}
               </Text>
             </View>
             <View style={theme.marginLeft12} />
@@ -488,7 +488,7 @@ function HomeScreen() {
                   theme.flex1,
                   {color: colors.quickLinkTextColor},
                 ]}>
-                Digital Forms
+                {`Digital\nForms`}
               </Text>
             </View>
           </View>
@@ -522,7 +522,9 @@ function HomeScreen() {
                   styles.headerContentContainer,
                   {marginTop: insets.top},
                 ]}>
-                <QRLogoIcon />
+                <View style={[theme.marginLeft24]}>
+                  <QRLogoIcon />
+                </View>
                 <View style={styles.headerContentInnerContainer}>
                   <Text
                     style={[

@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     zIndex: 9000,
     position: 'absolute',
-    bottom: 0,
+    bottom: -1,
   },
   container: {
     zIndex: 9000,
