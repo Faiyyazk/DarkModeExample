@@ -7,6 +7,7 @@ import {
   View,
   TouchableOpacity,
   FlatList,
+  Dimensions,
 } from 'react-native';
 import BlastedImage from 'react-native-blasted-image';
 import {hp, wp} from '../utils/responsive';
@@ -33,6 +34,11 @@ import HighlightTabBar from '../components/tabbar/HighlightTabBar';
 import {DateTime} from 'luxon';
 
 const Tab = createMaterialTopTabNavigator();
+
+const baseWidth = 390;
+const baseHeight = 106;
+const {width: deviceWidth} = Dimensions.get('window');
+const height = (deviceWidth / baseWidth) * baseHeight;
 
 function HomeScreen() {
   const {dark, colors} = useTheme();
@@ -494,7 +500,7 @@ function HomeScreen() {
   return (
     <View style={styles.container}>
       <ScrollView
-        contentContainerStyle={[theme.paddingBottom38]}
+        contentContainerStyle={{paddingBottom: height + 38}}
         showsVerticalScrollIndicator={false}>
         <View style={styles.headerContainer}>
           <BlastedImage

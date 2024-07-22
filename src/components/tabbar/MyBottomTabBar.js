@@ -167,6 +167,9 @@ export default function MyBottomTabBar({state, navigation}) {
 const styles = StyleSheet.create({
   bgTransparent: {
     backgroundColor: 'transparent',
+    zIndex: 9000,
+    position: 'absolute',
+    bottom: 0,
   },
   container: {
     zIndex: 9000,
