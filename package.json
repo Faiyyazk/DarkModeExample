@@ -14,6 +14,7 @@
     "@react-navigation/material-top-tabs": "^6.6.14",
     "@react-navigation/native": "^6.1.18",
     "@react-navigation/native-stack": "^6.10.1",
+    "luxon": "^3.4.4",
     "react": "18.2.0",
     "react-native": "0.74.3",
     "react-native-blasted-image": "^0.0.13",

@@ -5,11 +5,17 @@ import {
   BookADeskSvg,
   BuildingSvg,
   CalendarSvg,
+  ContestsSvg,
   EventsSvg,
+  HighlightClockSvg,
   HomeSvg,
+  PromotionsSvg,
   QRLogoSvg,
   QuadSvg,
   QuestionSvg,
+  RegisterEventSvg,
+  ForwardArrowSvg,
+  ShareSvg,
 } from './svgs';
 
 export const QRLogoIcon = () => (
@@ -62,4 +68,32 @@ export const QuestionIcon = props => (
 
 export const EventsIcon = props => (
   <SvgUri width={wp(16)} height={wp(16)} svgXmlData={EventsSvg(props)} />
+);
+
+export const ContestsIcon = props => (
+  <SvgUri width={wp(16)} height={wp(16)} svgXmlData={ContestsSvg(props)} />
+);
+
+export const PromotionsIcon = props => (
+  <SvgUri width={wp(16)} height={wp(16)} svgXmlData={PromotionsSvg(props)} />
+);
+
+export const HighlightClockIcon = props => (
+  <SvgUri
+    width={wp(14)}
+    height={wp(14)}
+    svgXmlData={HighlightClockSvg(props)}
+  />
+);
+
+export const RegisterEventIcon = props => (
+  <SvgUri width={wp(20)} height={wp(20)} svgXmlData={RegisterEventSvg(props)} />
+);
+
+export const ForwardArrowIcon = () => (
+  <SvgUri width={wp(20)} height={wp(20)} svgXmlData={ForwardArrowSvg()} />
+);
+
+export const ShareIcon = props => (
+  <SvgUri width={wp(20)} height={wp(20)} svgXmlData={ShareSvg(props)} />
 );

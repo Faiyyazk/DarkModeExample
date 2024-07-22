@@ -11,6 +11,7 @@ const commonColors = {
   brandSecondary: '#00954C',
   orange: '#FF7A00',
   textColor: '#1E1E1E',
+  eventShareButton: '#96BAC33D',
 };
 
 const light = {
@@ -19,6 +20,10 @@ const light = {
   neutral900: '#18212B',
   blue: '#0090FA',
   bottomBar: '#FFFFFF',
+  highlightCardBackground: '#FBFBFB',
+  highlightCardDateTextColor: '#192430',
+  highlightCardTitleTextColor: '#1E1E1E',
+  highlightCardDescriptionTextColor: '#6C7886',
   ...commonColors,
 };
 
@@ -27,6 +32,10 @@ const dark = {
   neutral800: '#F5F6F6',
   neutral900: '#FFFFFF',
   bottomBar: '#18212B',
+  highlightCardBackground: '#192430',
+  highlightCardDateTextColor: '#FBFBFB',
+  highlightCardTitleTextColor: '#EAF4F4',
+  highlightCardDescriptionTextColor: '#C4C4C4',
   ...commonColors,
 };
 

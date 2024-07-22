@@ -68,6 +68,7 @@ export default function HighlightTabBar({state, descriptors, navigation}) {
                 theme.flexDirectionRow,
                 theme.alignItemsCenter,
                 styles.tabBar,
+                // eslint-disable-next-line react-native/no-inline-styles
                 {
                   backgroundColor: isFocused ? colors.brand600 : 'transparent',
                   borderColor: isFocused

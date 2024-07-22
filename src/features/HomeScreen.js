@@ -6,21 +6,50 @@ import {
   Text,
   View,
   TouchableOpacity,
+  FlatList,
 } from 'react-native';
 import BlastedImage from 'react-native-blasted-image';
 import {hp, wp} from '../utils/responsive';
 import LinearGradient from 'react-native-linear-gradient';
-import {BookADeskIcon, EventsIcon, QRLogoIcon} from '../components/icons/icons';
+import {
+  BookADeskIcon,
+  ContestsIcon,
+  EventsIcon,
+  ForwardArrowIcon,
+  HighlightClockIcon,
+  PromotionsIcon,
+  QRLogoIcon,
+  RegisterEventIcon,
+  ShareIcon,
+} from '../components/icons/icons';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {theme} from '../utils/theme';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import HighlightTabBar from '../components/tabbar/HighlightTabBar';
+import {DateTime} from 'luxon';
 
 const Tab = createMaterialTopTabNavigator();
 
 function HomeScreen() {
   const {dark, colors} = useTheme();
   const insets = useSafeAreaInsets();
+
+  const events = [
+    {
+      image:
+        'https://images.unsplash.com/photo-1720048171080-78849cff8b19?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90oy1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      title: 'Brush & Bloom: Paint a Peony Candle at Work',
+      description: 'Celebrating the arrival of sprint!',
+      createdAt: DateTime.now(),
+    },
+    {
+      image:
+        'https://images.unsplash.com/photo-1720048171080-78849cff8b19?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90oy1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      title: 'Brush & Bloom: Paint a Peony Candle at Work',
+      description: 'Celebrating the arrival of sprint!',
+      createdAt: DateTime.now(),
+    },
+  ];
 
   const darkModeGradient = [
     {
@@ -59,6 +88,218 @@ function HomeScreen() {
     );
   }
 
+  function buildContestsIcon({focused}) {
+    return (
+      <ContestsIcon
+        color={
+          focused
+            ? colors.neutral100
+            : dark
+            ? colors.neutral200
+            : colors.brand600
+        }
+      />
+    );
+  }
+
+  function buildPromotionsIcon({focused}) {
+    return (
+      <PromotionsIcon
+        color={
+          focused
+            ? colors.neutral100
+            : dark
+            ? colors.neutral200
+            : colors.brand600
+        }
+      />
+    );
+  }
+
+  function renderItem(item, index) {
+    const isLastChild = index === events.length - 1;
+    return (
+      <View
+        style={[
+          theme.flexDirectionColumn,
+          theme.marginLeft16,
+          theme.borderRadius8,
+          {
+            width: wp(354),
+            marginRight: wp(isLastChild ? 16 : 0),
+            backgroundColor: colors.highlightCardBackground,
+          },
+        ]}>
+        <View>
+          <BlastedImage
+            width={wp(354)}
+            height={hp(120)}
+            style={[theme.borderTopLeftRadius8, theme.borderTopRightRadius8]}
+            source={{uri: item.image}}
+          />
+          <View
+            style={{
+              backgroundColor: colors.bgTimeOverlay,
+              top: hp(12),
+              left: wp(12),
+              ...theme.paddingTop8,
+              ...theme.paddingBottom8,
+              ...theme.paddingLeft8,
+              ...theme.paddingRight8,
+              ...theme.borderRadius6,
+              ...theme.positionAbsolute,
+              ...theme.flexDirectionRow,
+              ...theme.alignItemsCenter,
+            }}>
+            <HighlightClockIcon />
+            <Text
+              style={[
+                theme.marginLeft6,
+                theme.commonFontSize14,
+                theme.lineHeight19,
+                theme.fontsPrimaryMedium,
+                {
+                  color: colors.neutral100,
+                },
+              ]}>
+              10am - 3pm
+            </Text>
+          </View>
+        </View>
+
+        <View
+          style={[
+            theme.paddingLeft12,
+            theme.paddingRight12,
+            theme.paddingTop16,
+            theme.paddingBottom16,
+            theme.flexDirectionColumn,
+          ]}>
+          <View style={[theme.flexDirectionRow, theme.alignItemsCenter]}>
+            <View
+              style={[
+                theme.flexDirectionColumn,
+                theme.alignItemsCenter,
+                theme.justifyContentCenter,
+                {width: wp(48)},
+              ]}>
+              <Text
+                style={[
+                  theme.commonFontSize24,
+                  theme.lineHeight28,
+                  theme.fontsPrimaryBold,
+                  {color: colors.highlightCardDateTextColor},
+                ]}>
+                {item.createdAt.toFormat('dd')}
+              </Text>
+              <Text
+                style={[
+                  theme.commonFontSize14,
+                  theme.lineHeight20,
+                  theme.fontsPrimaryMedium,
+                  {color: colors.highlightCardDateTextColor},
+                ]}>
+                {item.createdAt.toFormat('MMM')}
+              </Text>
+            </View>
+            <View
+              style={[
+                theme.flexDirectionColumn,
+                theme.marginLeft24,
+                theme.flex1,
+              ]}>
+              <Text
+                style={[
+                  theme.commonFontSize14,
+                  theme.lineHeight17,
+                  theme.fontsPrimaryRegular,
+                  {color: colors.highlightCardTitleTextColor},
+                ]}
+                numberOfLines={2}>
+                {item.title}
+              </Text>
+              <Text
+                style={[
+                  theme.commonFontSize14,
+                  theme.lineHeight20,
+                  theme.fontsPrimaryRegular,
+                  {color: colors.highlightCardDescriptionTextColor},
+                ]}
+                numberOfLines={1}>
+                {item.description}
+              </Text>
+            </View>
+          </View>
+
+          <View
+            style={[
+              theme.paddingTop20,
+              theme.flexDirectionRow,
+              theme.alignItemsCenter,
+            ]}>
+            <TouchableOpacity
+              style={[
+                theme.flexDirectionRow,
+                theme.flex1,
+                theme.paddingTop10,
+                theme.paddingBottom10,
+                theme.alignItemsCenter,
+                theme.justifyContentCenter,
+                theme.borderRadius6,
+                {
+                  backgroundColor: colors.brandSecondary,
+                },
+              ]}>
+              <RegisterEventIcon />
+              <Text
+                style={[
+                  theme.marginLeft4,
+                  theme.marginRight4,
+                  theme.commonFontSize16,
+                  theme.lineHeight22,
+                  theme.fontsPrimaryMedium,
+                  {
+                    color: colors.neutral100,
+                  },
+                ]}>
+                Register Now
+              </Text>
+              <ForwardArrowIcon />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[
+                theme.paddingTop16,
+                theme.paddingBottom16,
+                theme.paddingLeft12,
+                theme.paddingRight12,
+                theme.marginLeft12,
+                theme.borderRadius6,
+                {
+                  backgroundColor: colors.eventShareButton,
+                },
+              ]}>
+              <ShareIcon color={dark ? colors.neutral100 : colors.neutral700} />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    );
+  }
+
+  function buildEvents() {
+    return (
+      <FlatList
+        horizontal
+        contentContainerStyle={{
+          ...theme.marginTop16,
+        }}
+        showsHorizontalScrollIndicator={false}
+        data={events}
+        renderItem={({item, index}) => renderItem(item, index)}
+      />
+    );
+  }
+
   function buildHightlights() {
     return (
       <View
@@ -79,30 +320,33 @@ function HomeScreen() {
           }}>
           Highlights this Week
         </Text>
-        <Tab.Navigator initialRouteName={'Events'} tabBar={HighlightTabBar}>
+        <Tab.Navigator
+          swipeEnabled={false}
+          initialRouteName={'Events'}
+          tabBar={HighlightTabBar}>
           <Tab.Screen
             options={{
               tabBarLabel: 'Events',
               tabBarIcon: buildEventsIcon,
             }}
             name="Events"
-            children={() => <View />}
+            children={() => buildEvents()}
           />
           <Tab.Screen
             options={{
               tabBarLabel: 'Contests',
-              tabBarIcon: buildEventsIcon,
+              tabBarIcon: buildContestsIcon,
             }}
             name="Contests"
-            children={() => <View />}
+            children={() => buildEvents()}
           />
           <Tab.Screen
             options={{
               tabBarLabel: 'Promotions',
-              tabBarIcon: buildEventsIcon,
+              tabBarIcon: buildPromotionsIcon,
             }}
             name="Promotions"
-            children={() => <View />}
+            children={() => buildEvents()}
           />
         </Tab.Navigator>
       </View>

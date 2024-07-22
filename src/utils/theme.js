@@ -13,6 +13,10 @@ export const theme = {
     alignItems: 'center',
   },
 
+  justifyContentCenter: {
+    justifyContent: 'center',
+  },
+
   flex1: {
     flex: 1,
   },
@@ -29,12 +33,40 @@ export const theme = {
     paddingBottom: hp(32),
   },
 
+  paddingTop10: {
+    paddingTop: hp(10),
+  },
+
+  paddingBottom10: {
+    paddingBottom: hp(10),
+  },
+
+  paddingLeft10: {
+    paddingLeft: wp(10),
+  },
+
+  paddingRight10: {
+    paddingRight: wp(10),
+  },
+
   paddingTop11: {
     paddingTop: hp(11),
   },
 
   paddingBottom11: {
     paddingBottom: hp(11),
+  },
+
+  paddingTop12: {
+    paddingTop: hp(12),
+  },
+
+  paddingBottom12: {
+    paddingBottom: hp(12),
+  },
+
+  paddingBottom16: {
+    paddingBottom: hp(16),
   },
 
   paddingTop16: {
@@ -47,6 +79,14 @@ export const theme = {
 
   paddingBottom6: {
     paddingBottom: hp(6),
+  },
+
+  paddingLeft6: {
+    paddingLeft: wp(6),
+  },
+
+  paddingRight6: {
+    paddingRight: wp(6),
   },
 
   paddingLeft12: {
@@ -77,8 +117,32 @@ export const theme = {
     borderRadius: hp(6),
   },
 
+  borderRadius8: {
+    borderRadius: hp(8),
+  },
+
+  borderTopLeftRadius8: {
+    borderTopLeftRadius: hp(8),
+  },
+
+  borderTopRightRadius8: {
+    borderTopRightRadius: hp(8),
+  },
+
   marginLeft4: {
     marginLeft: wp(4),
+  },
+
+  marginLeft6: {
+    marginLeft: wp(6),
+  },
+
+  marginLeft24: {
+    marginLeft: wp(24),
+  },
+
+  marginRight4: {
+    marginRight: wp(4),
   },
 
   marginRight6: {
@@ -99,6 +163,10 @@ export const theme = {
 
   marginBottom16: {
     marginBottom: hp(16),
+  },
+
+  marginTop16: {
+    marginTop: hp(16),
   },
 
   fontsPrimaryRegular: {
@@ -137,6 +205,10 @@ export const theme = {
     fontSize: fp(20),
   },
 
+  lineHeight17: {
+    lineHeight: fp(17),
+  },
+
   lineHeight19: {
     lineHeight: fp(19),
   },
@@ -153,7 +225,39 @@ export const theme = {
     fontSize: fp(24),
   },
 
+  lineHeight28: {
+    lineHeight: fp(28),
+  },
+
   lineHeight29: {
     lineHeight: fp(29),
+  },
+
+  paddingTop8: {
+    paddingTop: hp(8),
+  },
+
+  paddingTop20: {
+    paddingTop: hp(20),
+  },
+
+  paddingBottom8: {
+    paddingBottom: hp(8),
+  },
+
+  paddingLeft8: {
+    paddingLeft: wp(8),
+  },
+
+  paddingRight8: {
+    paddingRight: wp(8),
+  },
+
+  positionAbsolute: {
+    position: 'absolute',
+  },
+
+  marginLeft12: {
+    marginLeft: wp(12),
   },
 };
