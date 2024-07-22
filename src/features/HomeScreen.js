@@ -10,7 +10,7 @@ import {
 import BlastedImage from 'react-native-blasted-image';
 import {hp, wp} from '../utils/responsive';
 import LinearGradient from 'react-native-linear-gradient';
-import {QRLogoIcon} from '../components/icons/icons';
+import {BookADeskIcon, QRLogoIcon} from '../components/icons/icons';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {theme} from '../utils/theme';
 import BottomBarSvg from '../components/icons/bottombarsvg';
@@ -55,6 +55,9 @@ function HomeScreen() {
             color: colors.netural900,
             ...theme.marginLeft16,
             ...theme.marginRight16,
+            ...theme.commonFontSize20,
+            ...theme.lineHeight24,
+            ...theme.fontsPrimarySemiBold,
           }}>
           Highlights this Week
         </Text>
@@ -89,16 +92,48 @@ function HomeScreen() {
                 ]}>
                 <QRLogoIcon />
                 <View style={styles.headerContentInnerContainer}>
-                  <Text style={{color: colors.netural400}}>Welcome to</Text>
-                  <Text style={{color: colors.netural100}}>
+                  <Text
+                    style={[
+                      {color: colors.netural400},
+                      theme.commonFontSize16,
+                      theme.lineHeight19,
+                      theme.fontsPrimaryRegular,
+                    ]}>
+                    Welcome to
+                  </Text>
+                  <Text
+                    style={[
+                      {color: colors.netural100},
+                      theme.commonFontSize24,
+                      theme.lineHeight29,
+                      theme.fontsPrimaryBold,
+                    ]}>
                     Commerce Court West
                   </Text>
                   <View style={styles.headerBookingContentContainer}>
-                    <View style={[theme.flexDirectionColumn, theme.flex1]}>
-                      <Text style={{color: colors.netural100}}>
+                    <View
+                      style={[
+                        theme.flexDirectionColumn,
+                        theme.flex1,
+                        theme.marginRight16,
+                      ]}>
+                      <Text
+                        numberOfLines={1}
+                        style={[
+                          {color: colors.netural100},
+                          theme.commonFontSize16,
+                          theme.lineHeight19,
+                          theme.fontsPrimarySemiBold,
+                        ]}>
                         Floor 48 • Flex 4831
                       </Text>
-                      <Text style={{color: colors.netural400}}>
+                      <Text
+                        style={[
+                          {color: colors.netural400},
+                          theme.commonFontSize16,
+                          theme.lineHeight22,
+                          theme.fontsPrimaryRegular,
+                        ]}>
                         12 PM - 5 PM
                       </Text>
                     </View>
@@ -107,7 +142,15 @@ function HomeScreen() {
                         styles.buttonContainer,
                         {backgroundColor: colors.brand500},
                       ]}>
-                      <Text style={{color: colors.netural100}}>
+                      <BookADeskIcon />
+                      <Text
+                        style={[
+                          {color: colors.netural100},
+                          theme.commonFontSize16,
+                          theme.lineHeight22,
+                          theme.fontsPrimaryMedium,
+                          theme.marginLeft4,
+                        ]}>
                         Book A Desk
                       </Text>
                     </TouchableOpacity>
@@ -174,6 +217,8 @@ const styles = StyleSheet.create({
     ...theme.paddingLeft12,
     ...theme.paddingRight12,
     ...theme.borderRadius6,
+    ...theme.flexDirectionRow,
+    ...theme.alignItemsCenter,
   },
   container: {
     ...theme.flex1,

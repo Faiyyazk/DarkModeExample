@@ -1,4 +1,4 @@
-import {hp, wp} from './responsive';
+import {fp, hp, wp} from './responsive';
 
 export const theme = {
   flexDirectionColumn: {
@@ -61,11 +61,63 @@ export const theme = {
     borderRadius: hp(6),
   },
 
+  marginLeft4: {
+    marginLeft: wp(4),
+  },
+
   marginLeft16: {
     marginLeft: wp(16),
   },
 
   marginRight16: {
     marginRight: wp(16),
+  },
+
+  fontsPrimaryRegular: {
+    fontFamily: 'AlbertSans-Regular',
+    fontWeight: 'normal',
+  },
+
+  fontsPrimaryMedium: {
+    fontFamily: 'AlbertSans-Medium',
+    fontWeight: '500',
+  },
+
+  fontsPrimarySemiBold: {
+    fontFamily: 'AlbertSans-SemiBold',
+    fontWeight: '600',
+  },
+
+  fontsPrimaryBold: {
+    fontFamily: 'AlbertSans-Bold',
+    fontWeight: '700',
+  },
+
+  commonFontSize24: {
+    fontSize: fp(24),
+  },
+
+  commonFontSize16: {
+    fontSize: fp(16),
+  },
+
+  commonFontSize20: {
+    fontSize: fp(20),
+  },
+
+  lineHeight19: {
+    lineHeight: fp(19),
+  },
+
+  lineHeight22: {
+    lineHeight: fp(22),
+  },
+
+  lineHeight24: {
+    fontSize: fp(24),
+  },
+
+  lineHeight29: {
+    lineHeight: fp(29),
   },
 };
