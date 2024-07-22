@@ -3,7 +3,7 @@ import {View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {theme} from '../utils/theme';
 import HomeScreen from '../features/HomeScreen';
-import MyBottomTabBar from '../components/bottomtabbar/MyBottomTabBar';
+import MyBottomTabBar from '../components/tabbar/MyBottomTabBar';
 
 const Tab = createBottomTabNavigator();
 

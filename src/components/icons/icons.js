@@ -5,6 +5,7 @@ import {
   BookADeskSvg,
   BuildingSvg,
   CalendarSvg,
+  EventsSvg,
   HomeSvg,
   QRLogoSvg,
   QuadSvg,
@@ -57,4 +58,8 @@ export const QuestionIcon = props => (
     height={props.height}
     svgXmlData={QuestionSvg(props)}
   />
+);
+
+export const EventsIcon = props => (
+  <SvgUri width={wp(16)} height={wp(16)} svgXmlData={EventsSvg(props)} />
 );

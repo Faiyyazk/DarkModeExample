@@ -10,9 +10,13 @@ import {
 import BlastedImage from 'react-native-blasted-image';
 import {hp, wp} from '../utils/responsive';
 import LinearGradient from 'react-native-linear-gradient';
-import {BookADeskIcon, QRLogoIcon} from '../components/icons/icons';
+import {BookADeskIcon, EventsIcon, QRLogoIcon} from '../components/icons/icons';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {theme} from '../utils/theme';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import HighlightTabBar from '../components/tabbar/HighlightTabBar';
+
+const Tab = createMaterialTopTabNavigator();
 
 function HomeScreen() {
   const {dark, colors} = useTheme();
@@ -41,6 +45,20 @@ function HomeScreen() {
 
   const selectedGradient = dark ? darkModeGradient : lightModeGradient;
 
+  function buildEventsIcon({focused}) {
+    return (
+      <EventsIcon
+        color={
+          focused
+            ? colors.neutral100
+            : dark
+            ? colors.neutral200
+            : colors.brand600
+        }
+      />
+    );
+  }
+
   function buildHightlights() {
     return (
       <View
@@ -57,9 +75,36 @@ function HomeScreen() {
             ...theme.commonFontSize20,
             ...theme.lineHeight24,
             ...theme.fontsPrimarySemiBold,
+            ...theme.marginBottom16,
           }}>
           Highlights this Week
         </Text>
+        <Tab.Navigator initialRouteName={'Events'} tabBar={HighlightTabBar}>
+          <Tab.Screen
+            options={{
+              tabBarLabel: 'Events',
+              tabBarIcon: buildEventsIcon,
+            }}
+            name="Events"
+            children={() => <View />}
+          />
+          <Tab.Screen
+            options={{
+              tabBarLabel: 'Contests',
+              tabBarIcon: buildEventsIcon,
+            }}
+            name="Contests"
+            children={() => <View />}
+          />
+          <Tab.Screen
+            options={{
+              tabBarLabel: 'Promotions',
+              tabBarIcon: buildEventsIcon,
+            }}
+            name="Promotions"
+            children={() => <View />}
+          />
+        </Tab.Navigator>
       </View>
     );
   }

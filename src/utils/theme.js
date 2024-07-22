@@ -29,6 +29,14 @@ export const theme = {
     paddingBottom: hp(32),
   },
 
+  paddingTop11: {
+    paddingTop: hp(11),
+  },
+
+  paddingBottom11: {
+    paddingBottom: hp(11),
+  },
+
   paddingTop16: {
     paddingTop: hp(16),
   },
@@ -45,8 +53,16 @@ export const theme = {
     paddingLeft: wp(12),
   },
 
+  paddingLeft16: {
+    paddingLeft: wp(16),
+  },
+
   paddingRight12: {
     paddingRight: wp(12),
+  },
+
+  paddingRight14: {
+    paddingRight: wp(14),
   },
 
   paddingLeft24: {
@@ -65,12 +81,24 @@ export const theme = {
     marginLeft: wp(4),
   },
 
+  marginRight6: {
+    marginRight: wp(6),
+  },
+
+  marginRight8: {
+    marginRight: wp(8),
+  },
+
   marginLeft16: {
     marginLeft: wp(16),
   },
 
   marginRight16: {
     marginRight: wp(16),
+  },
+
+  marginBottom16: {
+    marginBottom: hp(16),
   },
 
   fontsPrimaryRegular: {
@@ -97,6 +125,10 @@ export const theme = {
     fontSize: fp(24),
   },
 
+  commonFontSize14: {
+    fontSize: fp(14),
+  },
+
   commonFontSize16: {
     fontSize: fp(16),
   },
@@ -107,6 +139,10 @@ export const theme = {
 
   lineHeight19: {
     lineHeight: fp(19),
+  },
+
+  lineHeight20: {
+    lineHeight: fp(20),
   },
 
   lineHeight22: {
