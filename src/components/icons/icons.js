@@ -16,6 +16,9 @@ import {
   RegisterEventSvg,
   ForwardArrowSvg,
   ShareSvg,
+  DigitalFormsSvg,
+  AmenitySvg,
+  RetailerSvg,
 } from './svgs';
 
 export const QRLogoIcon = () => (
@@ -96,4 +99,16 @@ export const ForwardArrowIcon = () => (
 
 export const ShareIcon = props => (
   <SvgUri width={wp(20)} height={wp(20)} svgXmlData={ShareSvg(props)} />
+);
+
+export const DigitalFormsIcon = props => (
+  <SvgUri width={wp(28)} height={wp(28)} svgXmlData={DigitalFormsSvg(props)} />
+);
+
+export const AmenityIcon = props => (
+  <SvgUri width={wp(28)} height={wp(28)} svgXmlData={AmenitySvg(props)} />
+);
+
+export const RetailersIcon = props => (
+  <SvgUri width={wp(28)} height={wp(28)} svgXmlData={RetailerSvg(props)} />
 );

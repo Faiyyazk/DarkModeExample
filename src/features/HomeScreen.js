@@ -12,14 +12,18 @@ import BlastedImage from 'react-native-blasted-image';
 import {hp, wp} from '../utils/responsive';
 import LinearGradient from 'react-native-linear-gradient';
 import {
+  AmenityIcon,
   BookADeskIcon,
+  BuildingIcon,
   ContestsIcon,
+  DigitalFormsIcon,
   EventsIcon,
   ForwardArrowIcon,
   HighlightClockIcon,
   PromotionsIcon,
   QRLogoIcon,
   RegisterEventIcon,
+  RetailersIcon,
   ShareIcon,
 } from '../components/icons/icons';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
@@ -302,12 +306,7 @@ function HomeScreen() {
 
   function buildHightlights() {
     return (
-      <View
-        style={[
-          theme.paddingTop32,
-          theme.paddingBottom32,
-          theme.flexDirectionColumn,
-        ]}>
+      <View style={[theme.paddingTop32, theme.flexDirectionColumn]}>
         <Text
           style={{
             color: colors.neutral900,
@@ -353,10 +352,149 @@ function HomeScreen() {
     );
   }
 
+  function buildQuickLinks() {
+    return (
+      <View style={[theme.paddingTop32, theme.flexDirectionColumn]}>
+        <Text
+          style={{
+            color: colors.neutral900,
+            ...theme.marginLeft16,
+            ...theme.marginRight16,
+            ...theme.commonFontSize20,
+            ...theme.lineHeight24,
+            ...theme.fontsPrimarySemiBold,
+          }}>
+          Quick Links
+        </Text>
+        <View style={[theme.flexDirectionColumn, theme.marginTop16]}>
+          <View
+            style={[
+              theme.flexDirectionRow,
+              theme.alignItemsCenter,
+              theme.marginLeft16,
+              theme.marginRight16,
+            ]}>
+            <View
+              style={[
+                theme.flexDirectionRow,
+                theme.alignItemsCenter,
+                theme.flex1,
+                theme.borderRadius8,
+                theme.paddingLeft16,
+                theme.paddingRight16,
+                theme.paddingTop14,
+                theme.paddingBottom14,
+                {backgroundColor: colors.quickLinkBackground},
+              ]}>
+              <BuildingIcon width={28} height={28} color={colors.qrColor} />
+              <Text
+                style={[
+                  theme.marginLeft16,
+                  theme.commonFontSize16,
+                  theme.lineHeight19,
+                  theme.fontsPrimaryMedium,
+                  theme.flex1,
+                  {color: colors.quickLinkTextColor},
+                ]}>
+                Building Updates
+              </Text>
+            </View>
+            <View style={theme.marginLeft12} />
+            <View
+              style={[
+                theme.flexDirectionRow,
+                theme.alignItemsCenter,
+                theme.flex1,
+                theme.borderRadius8,
+                theme.paddingLeft16,
+                theme.paddingRight16,
+                theme.paddingTop14,
+                theme.paddingBottom14,
+                {backgroundColor: colors.quickLinkBackground},
+              ]}>
+              <AmenityIcon color={colors.qrColor} />
+              <Text
+                style={[
+                  theme.marginLeft16,
+                  theme.commonFontSize16,
+                  theme.lineHeight19,
+                  theme.fontsPrimaryMedium,
+                  theme.flex1,
+                  {color: colors.quickLinkTextColor},
+                ]}>
+                Discover Amenities
+              </Text>
+            </View>
+          </View>
+          <View
+            style={[
+              theme.flexDirectionRow,
+              theme.alignItemsCenter,
+              theme.marginLeft16,
+              theme.marginRight16,
+              theme.marginTop12,
+            ]}>
+            <View
+              style={[
+                theme.flexDirectionRow,
+                theme.alignItemsCenter,
+                theme.flex1,
+                theme.borderRadius8,
+                theme.paddingLeft16,
+                theme.paddingRight16,
+                theme.paddingTop14,
+                theme.paddingBottom14,
+                {backgroundColor: colors.quickLinkBackground},
+              ]}>
+              <RetailersIcon color={colors.qrColor} />
+              <Text
+                style={[
+                  theme.marginLeft16,
+                  theme.commonFontSize16,
+                  theme.lineHeight19,
+                  theme.fontsPrimaryMedium,
+                  theme.flex1,
+                  {color: colors.quickLinkTextColor},
+                ]}>
+                Explore Retailers
+              </Text>
+            </View>
+            <View style={theme.marginLeft12} />
+            <View
+              style={[
+                theme.flexDirectionRow,
+                theme.alignItemsCenter,
+                theme.flex1,
+                theme.borderRadius8,
+                theme.paddingLeft16,
+                theme.paddingRight16,
+                theme.paddingTop14,
+                theme.paddingBottom14,
+                {backgroundColor: colors.quickLinkBackground},
+              ]}>
+              <DigitalFormsIcon color={colors.qrColor} />
+              <Text
+                style={[
+                  theme.marginLeft16,
+                  theme.commonFontSize16,
+                  theme.lineHeight19,
+                  theme.fontsPrimaryMedium,
+                  theme.flex1,
+                  {color: colors.quickLinkTextColor},
+                ]}>
+                Digital Forms
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView
-        contentContainerStyle={[]}
+        contentContainerStyle={[theme.paddingBottom38]}
         showsVerticalScrollIndicator={false}>
         <View style={styles.headerContainer}>
           <BlastedImage
@@ -449,6 +587,7 @@ function HomeScreen() {
           ))}
         </View>
         {buildHightlights()}
+        {buildQuickLinks()}
       </ScrollView>
     </View>
   );

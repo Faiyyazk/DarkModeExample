@@ -12,6 +12,7 @@ const commonColors = {
   orange: '#FF7A00',
   textColor: '#1E1E1E',
   eventShareButton: '#96BAC33D',
+  qrColor: '#00ADD7',
 };
 
 const light = {
@@ -24,6 +25,8 @@ const light = {
   highlightCardDateTextColor: '#192430',
   highlightCardTitleTextColor: '#1E1E1E',
   highlightCardDescriptionTextColor: '#6C7886',
+  quickLinkBackground: '#FFFFFF',
+  quickLinkTextColor: '#1E1E1E',
   ...commonColors,
 };
 
@@ -36,6 +39,8 @@ const dark = {
   highlightCardDateTextColor: '#FBFBFB',
   highlightCardTitleTextColor: '#EAF4F4',
   highlightCardDescriptionTextColor: '#C4C4C4',
+  quickLinkBackground: '#18212B',
+  quickLinkTextColor: '#FBFBFB',
   ...commonColors,
 };
 

@@ -165,6 +165,10 @@ export const theme = {
     marginBottom: hp(16),
   },
 
+  marginTop12: {
+    marginTop: hp(12),
+  },
+
   marginTop16: {
     marginTop: hp(16),
   },
@@ -259,5 +263,21 @@ export const theme = {
 
   marginLeft12: {
     marginLeft: wp(12),
+  },
+
+  paddingRight16: {
+    paddingRight: wp(16),
+  },
+
+  paddingTop14: {
+    paddingTop: hp(14),
+  },
+
+  paddingBottom14: {
+    paddingBottom: hp(14),
+  },
+
+  paddingBottom38: {
+    paddingBottom: hp(38),
   },
 };
