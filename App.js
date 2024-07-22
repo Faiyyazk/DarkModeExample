@@ -3,12 +3,10 @@ import {StatusBar, useColorScheme} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import HomeScreen from './src/features/HomeScreen';
 import {COLORS} from './src/utils/colors';
+import {StackNavigator} from './src/navigators/StackNavigator';
 
 function App() {
-  const Stack = createNativeStackNavigator();
   const colorScheme = useColorScheme();
 
   useEffect(() => {
@@ -22,15 +20,7 @@ function App() {
         dark: colorScheme === 'dark',
         colors: COLORS[colorScheme ?? 'dark'],
       }}>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="HomeScreen"
-          component={HomeScreen}
-          options={{
-            headerShown: false,
-          }}
-        />
-      </Stack.Navigator>
+      <StackNavigator />
     </NavigationContainer>
   );
 }

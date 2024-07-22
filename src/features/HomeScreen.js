@@ -13,7 +13,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import {BookADeskIcon, QRLogoIcon} from '../components/icons/icons';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {theme} from '../utils/theme';
-import BottomBarSvg from '../components/icons/bottombarsvg';
 
 function HomeScreen() {
   const {dark, colors} = useTheme();
@@ -52,7 +51,7 @@ function HomeScreen() {
         ]}>
         <Text
           style={{
-            color: colors.netural900,
+            color: colors.neutral900,
             ...theme.marginLeft16,
             ...theme.marginRight16,
             ...theme.commonFontSize20,
@@ -94,7 +93,7 @@ function HomeScreen() {
                 <View style={styles.headerContentInnerContainer}>
                   <Text
                     style={[
-                      {color: colors.netural400},
+                      {color: colors.neutral400},
                       theme.commonFontSize16,
                       theme.lineHeight19,
                       theme.fontsPrimaryRegular,
@@ -103,7 +102,7 @@ function HomeScreen() {
                   </Text>
                   <Text
                     style={[
-                      {color: colors.netural100},
+                      {color: colors.neutral100},
                       theme.commonFontSize24,
                       theme.lineHeight29,
                       theme.fontsPrimaryBold,
@@ -120,7 +119,7 @@ function HomeScreen() {
                       <Text
                         numberOfLines={1}
                         style={[
-                          {color: colors.netural100},
+                          {color: colors.neutral100},
                           theme.commonFontSize16,
                           theme.lineHeight19,
                           theme.fontsPrimarySemiBold,
@@ -129,7 +128,7 @@ function HomeScreen() {
                       </Text>
                       <Text
                         style={[
-                          {color: colors.netural400},
+                          {color: colors.neutral400},
                           theme.commonFontSize16,
                           theme.lineHeight22,
                           theme.fontsPrimaryRegular,
@@ -145,7 +144,7 @@ function HomeScreen() {
                       <BookADeskIcon />
                       <Text
                         style={[
-                          {color: colors.netural100},
+                          {color: colors.neutral100},
                           theme.commonFontSize16,
                           theme.lineHeight22,
                           theme.fontsPrimaryMedium,
@@ -162,7 +161,6 @@ function HomeScreen() {
         </View>
         {buildHightlights()}
       </ScrollView>
-      <BottomBarSvg />
     </View>
   );
 }
