@@ -13,8 +13,16 @@ export const theme = {
     alignItems: 'center',
   },
 
+  alignSelfBaseline: {
+    alignSelf: 'baseline',
+  },
+
   justifyContentCenter: {
     justifyContent: 'center',
+  },
+
+  justifyContentSpaceBetween: {
+    justifyContent: 'space-between',
   },
 
   flex1: {
@@ -113,20 +121,24 @@ export const theme = {
     paddingRight: wp(24),
   },
 
+  borderRadius4: {
+    borderRadius: wp(4),
+  },
+
   borderRadius6: {
-    borderRadius: hp(6),
+    borderRadius: wp(6),
   },
 
   borderRadius8: {
-    borderRadius: hp(8),
+    borderRadius: wp(8),
   },
 
   borderTopLeftRadius8: {
-    borderTopLeftRadius: hp(8),
+    borderTopLeftRadius: wp(8),
   },
 
   borderTopRightRadius8: {
-    borderTopRightRadius: hp(8),
+    borderTopRightRadius: wp(8),
   },
 
   marginLeft4: {
@@ -135,6 +147,10 @@ export const theme = {
 
   marginLeft6: {
     marginLeft: wp(6),
+  },
+
+  marginLeft8: {
+    marginLeft: wp(8),
   },
 
   marginLeft24: {
@@ -159,6 +175,10 @@ export const theme = {
 
   marginRight16: {
     marginRight: wp(16),
+  },
+
+  marginBottom12: {
+    marginBottom: hp(12),
   },
 
   marginBottom16: {
@@ -197,6 +217,10 @@ export const theme = {
     fontSize: fp(24),
   },
 
+  commonFontSize13: {
+    fontSize: fp(13),
+  },
+
   commonFontSize14: {
     fontSize: fp(14),
   },
@@ -209,8 +233,16 @@ export const theme = {
     fontSize: fp(20),
   },
 
+  lineHeight16: {
+    lineHeight: fp(16),
+  },
+
   lineHeight17: {
     lineHeight: fp(17),
+  },
+
+  lineHeight18: {
+    lineHeight: fp(18),
   },
 
   lineHeight19: {

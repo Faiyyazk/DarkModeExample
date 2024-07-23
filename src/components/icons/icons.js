@@ -19,6 +19,8 @@ import {
   DigitalFormsSvg,
   AmenitySvg,
   RetailerSvg,
+  ArrowRightSvg,
+  BulletinSvg,
 } from './svgs';
 
 export const QRLogoIcon = () => (
@@ -111,4 +113,12 @@ export const AmenityIcon = props => (
 
 export const RetailersIcon = props => (
   <SvgUri width={wp(28)} height={wp(28)} svgXmlData={RetailerSvg(props)} />
+);
+
+export const ArrowRightIcon = props => (
+  <SvgUri width={wp(20)} height={wp(20)} svgXmlData={ArrowRightSvg(props)} />
+);
+
+export const BulletinIcon = props => (
+  <SvgUri width={wp(14)} height={wp(14)} svgXmlData={BulletinSvg(props)} />
 );

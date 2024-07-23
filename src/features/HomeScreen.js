@@ -1,5 +1,5 @@
 import {useTheme} from '@react-navigation/native';
-import React from 'react';
+import React, {useRef, useState} from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -14,8 +14,10 @@ import {hp, wp} from '../utils/responsive';
 import LinearGradient from 'react-native-linear-gradient';
 import {
   AmenityIcon,
+  ArrowRightIcon,
   BookADeskIcon,
   BuildingIcon,
+  BulletinIcon,
   ContestsIcon,
   DigitalFormsIcon,
   EventsIcon,
@@ -83,6 +85,21 @@ function HomeScreen() {
   ];
 
   const selectedGradient = dark ? darkModeGradient : lightModeGradient;
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const flatListRef = useRef(null);
+
+  const data = [1, 2, 3, 4, 5];
+
+  const onViewableItemsChanged = useRef(({viewableItems}) => {
+    if (viewableItems.length > 0) {
+      setCurrentIndex(viewableItems[0].index);
+    }
+  }).current;
+
+  const viewabilityConfig = {
+    itemVisiblePercentThreshold: 100, // Trigger onViewableItemsChanged when 100% of the item is visible
+  };
 
   function buildEventsIcon({focused}) {
     return (
@@ -497,6 +514,167 @@ function HomeScreen() {
     );
   }
 
+  function buildNews() {
+    return (
+      <View style={[theme.paddingTop32, theme.flexDirectionColumn]}>
+        <View
+          style={[
+            theme.flexDirectionRow,
+            theme.alignItemsCenter,
+            theme.justifyContentSpaceBetween,
+            theme.marginLeft16,
+            theme.marginRight16,
+          ]}>
+          <Text
+            style={{
+              color: colors.neutral900,
+              ...theme.commonFontSize20,
+              ...theme.lineHeight24,
+              ...theme.fontsPrimarySemiBold,
+            }}>
+            News
+          </Text>
+          <TouchableOpacity
+            style={[theme.flexDirectionRow, theme.alignItemsCenter]}>
+            <Text
+              style={{
+                color: colors.brand500,
+                ...theme.commonFontSize14,
+                ...theme.lineHeight20,
+                ...theme.fontsPrimaryMedium,
+                ...theme.marginRight4,
+              }}>
+              Show All
+            </Text>
+            <ArrowRightIcon />
+          </TouchableOpacity>
+        </View>
+        <FlatList
+          ref={flatListRef}
+          horizontal
+          data={data}
+          contentContainerStyle={[theme.marginTop16]}
+          keyExtractor={item => item.toString()}
+          renderItem={({item, index}) => {
+            return (
+              <View
+                style={[
+                  theme.flexDirectionColumn,
+                  theme.marginRight16,
+                  theme.paddingLeft12,
+                  theme.paddingRight12,
+                  theme.paddingTop12,
+                  theme.paddingBottom12,
+                  // eslint-disable-next-line react-native/no-inline-styles
+                  {
+                    marginLeft: index === 0 ? wp(16) : 0,
+                    width: wp(288),
+                    backgroundColor:
+                      currentIndex === index
+                        ? colors.newsActiveCardBackground
+                        : colors.newsInActiveCardBackground,
+                    borderColor:
+                      currentIndex === index
+                        ? colors.newsActiveCardBorderColor
+                        : colors.newsInActiveCardBorderColor,
+                    borderWidth: 1,
+                  },
+                ]}>
+                <View
+                  style={[
+                    theme.justifyContentSpaceBetween,
+                    theme.flexDirectionRow,
+                    theme.alignItemsCenter,
+                  ]}>
+                  <View
+                    style={[theme.flexDirectionRow, theme.alignItemsCenter]}>
+                    <View
+                      style={[
+                        {backgroundColor: colors.newsCardTagColor},
+                        theme.paddingLeft8,
+                        theme.paddingRight8,
+                        theme.paddingTop6,
+                        theme.paddingBottom6,
+                        theme.flexDirectionRow,
+                        theme.alignItemsCenter,
+                        theme.borderRadius4,
+                      ]}>
+                      <BulletinIcon color={colors.blue} />
+                      <Text
+                        style={[
+                          theme.marginLeft6,
+                          theme.commonFontSize13,
+                          theme.fontsPrimaryMedium,
+                          theme.lineHeight18,
+                          {
+                            color: colors.bulletinTextColor,
+                          },
+                        ]}>
+                        Bulletin
+                      </Text>
+                    </View>
+                    <Text
+                      style={[
+                        theme.marginLeft8,
+                        theme.commonFontSize13,
+                        theme.fontsPrimaryRegular,
+                        theme.lineHeight18,
+                        {color: colors.bulletinDateTextColor},
+                      ]}>
+                      Mar 30
+                    </Text>
+                  </View>
+                  <View
+                    style={[
+                      theme.borderRadius6,
+                      {
+                        width: wp(12),
+                        height: wp(12),
+                        backgroundColor: colors.redColor,
+                      },
+                    ]}
+                  />
+                </View>
+                <Text
+                  style={[
+                    theme.marginTop16,
+                    theme.marginBottom12,
+                    theme.commonFontSize16,
+                    theme.fontsPrimarySemiBold,
+                    theme.lineHeight19,
+                    {
+                      color: colors.bulletinTitleTextColor,
+                    },
+                  ]}>
+                  Flex Parking Passes
+                </Text>
+                <Text
+                  numberOfLines={3}
+                  style={[
+                    theme.commonFontSize13,
+                    theme.fontsPrimaryRegular,
+                    theme.lineHeight16,
+                    {
+                      color: colors.bulletinDescriptionTextColor,
+                    },
+                  ]}>
+                  The Flex Parking passes will allow tenants to choose between
+                  two passes that accommodates hybrid work schedules.
+                </Text>
+              </View>
+            );
+          }}
+          snapToAlignment="start"
+          snapToInterval={wp(264) + theme.marginRight16.marginRight}
+          decelerationRate="fast"
+          showsHorizontalScrollIndicator={false}
+          onViewableItemsChanged={onViewableItemsChanged}
+          viewabilityConfig={viewabilityConfig}
+        />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView
@@ -596,6 +774,7 @@ function HomeScreen() {
         </View>
         {buildHightlights()}
         {buildQuickLinks()}
+        {buildNews()}
       </ScrollView>
     </View>
   );

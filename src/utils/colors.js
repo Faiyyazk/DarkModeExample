@@ -13,6 +13,8 @@ const commonColors = {
   textColor: '#1E1E1E',
   eventShareButton: '#96BAC33D',
   qrColor: '#00ADD7',
+  newsCardTagColor: '#3FADFF33',
+  redColor: '#E63E30',
 };
 
 const light = {
@@ -27,6 +29,14 @@ const light = {
   highlightCardDescriptionTextColor: '#6C7886',
   quickLinkBackground: '#FFFFFF',
   quickLinkTextColor: '#1E1E1E',
+  newsActiveCardBackground: '#FFFFFF',
+  newsInActiveCardBackground: '#F5F6F6',
+  newsActiveCardBorderColor: '#FFFFFF',
+  newsInActiveCardBorderColor: '#F5F6F6',
+  bulletinTextColor: '#0090FA',
+  bulletinDateTextColor: '#18212B',
+  bulletinTitleTextColor: '#18212B',
+  bulletinDescriptionTextColor: '#202D3C',
   ...commonColors,
 };
 
@@ -34,6 +44,7 @@ const dark = {
   background: '#12181E',
   neutral800: '#F5F6F6',
   neutral900: '#FFFFFF',
+  blue: '#3FADFF',
   bottomBar: '#18212B',
   highlightCardBackground: '#192430',
   highlightCardDateTextColor: '#FBFBFB',
@@ -41,6 +52,14 @@ const dark = {
   highlightCardDescriptionTextColor: '#C4C4C4',
   quickLinkBackground: '#18212B',
   quickLinkTextColor: '#FBFBFB',
+  newsActiveCardBackground: '#18212B',
+  newsInActiveCardBackground: '#18212B',
+  newsActiveCardBorderColor: 'rgba(13, 192, 220, 0.50)',
+  newsInActiveCardBorderColor: '#18212B',
+  bulletinTextColor: '#97D3FF',
+  bulletinDateTextColor: '#C4C4C4',
+  bulletinTitleTextColor: '#FBFBFB',
+  bulletinDescriptionTextColor: '#F5F6F6',
   ...commonColors,
 };
 
