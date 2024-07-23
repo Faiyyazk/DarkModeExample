@@ -177,6 +177,10 @@ export const theme = {
     marginRight: wp(16),
   },
 
+  marginBottom8: {
+    marginBottom: hp(8),
+  },
+
   marginBottom12: {
     marginBottom: hp(12),
   },
@@ -311,5 +315,9 @@ export const theme = {
 
   paddingBottom38: {
     paddingBottom: hp(38),
+  },
+
+  textAlignCenter: {
+    textAlign: 'center',
   },
 };

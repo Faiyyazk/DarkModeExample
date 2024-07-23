@@ -21,6 +21,8 @@ import {
   RetailerSvg,
   ArrowRightSvg,
   BulletinSvg,
+  ClockSvg,
+  LocationSvg,
 } from './svgs';
 
 export const QRLogoIcon = () => (
@@ -121,4 +123,12 @@ export const ArrowRightIcon = props => (
 
 export const BulletinIcon = props => (
   <SvgUri width={wp(14)} height={wp(14)} svgXmlData={BulletinSvg(props)} />
+);
+
+export const ClockIcon = props => (
+  <SvgUri width={wp(12)} height={wp(12)} svgXmlData={ClockSvg(props)} />
+);
+
+export const LocationIcon = props => (
+  <SvgUri width={wp(12)} height={wp(12)} svgXmlData={LocationSvg(props)} />
 );

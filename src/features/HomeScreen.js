@@ -18,11 +18,13 @@ import {
   BookADeskIcon,
   BuildingIcon,
   BulletinIcon,
+  ClockIcon,
   ContestsIcon,
   DigitalFormsIcon,
   EventsIcon,
   ForwardArrowIcon,
   HighlightClockIcon,
+  LocationIcon,
   PromotionsIcon,
   QRLogoIcon,
   RegisterEventIcon,
@@ -45,6 +47,7 @@ const height = (deviceWidth / baseWidth) * baseHeight;
 function HomeScreen() {
   const {dark, colors} = useTheme();
   const insets = useSafeAreaInsets();
+  const [contentHeight, setContentHeight] = useState(0);
 
   const events = [
     {
@@ -90,6 +93,29 @@ function HomeScreen() {
   const flatListRef = useRef(null);
 
   const data = [1, 2, 3, 4, 5];
+
+  const amenityBookings = [
+    {
+      id: 1,
+      image:
+        'https://images.unsplash.com/photo-1720048171080-78849cff8b19?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90oy1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      title: 'The Green Room (Toronto)',
+      category: 'Special Event Space',
+      time: '10am - 3pm',
+      location: '200 King St W, Toronto',
+      createdAt: DateTime.now(),
+    },
+    {
+      id: 2,
+      image:
+        'https://images.unsplash.com/photo-1720048171080-78849cff8b19?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90oy1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      title: 'Active Commuter Shower Facilities',
+      category: 'Active Commuter Amenities',
+      time: '10am - 3pm',
+      location: '200 King St W, Toronto',
+      createdAt: DateTime.now(),
+    },
+  ];
 
   const onViewableItemsChanged = useRef(({viewableItems}) => {
     if (viewableItems.length > 0) {
@@ -676,6 +702,207 @@ function HomeScreen() {
     );
   }
 
+  function buildAmenityBookings() {
+    return (
+      <View style={[theme.paddingTop32, theme.flexDirectionColumn]}>
+        <View
+          style={[
+            theme.flexDirectionRow,
+            theme.alignItemsCenter,
+            theme.justifyContentSpaceBetween,
+            theme.marginLeft16,
+            theme.marginRight16,
+          ]}>
+          <Text
+            style={{
+              color: colors.neutral900,
+              ...theme.commonFontSize20,
+              ...theme.lineHeight24,
+              ...theme.fontsPrimarySemiBold,
+            }}>
+            Amenity Bookings
+          </Text>
+          <TouchableOpacity
+            style={[theme.flexDirectionRow, theme.alignItemsCenter]}>
+            <Text
+              style={{
+                color: colors.brand500,
+                ...theme.commonFontSize14,
+                ...theme.lineHeight20,
+                ...theme.fontsPrimaryMedium,
+                ...theme.marginRight4,
+              }}>
+              Show All
+            </Text>
+            <ArrowRightIcon />
+          </TouchableOpacity>
+        </View>
+        <FlatList
+          data={amenityBookings}
+          contentContainerStyle={[
+            theme.marginTop16,
+            theme.paddingLeft16,
+            theme.paddingRight16,
+          ]}
+          keyExtractor={item => item.id}
+          renderItem={({item, index}) => {
+            return (
+              <View
+                style={[
+                  theme.borderRadius8,
+                  theme.flexDirectionRow,
+                  theme.alignItemsCenter,
+                  {
+                    backgroundColor: colors.amenityCardBackground,
+                    marginBottom:
+                      index !== amenityBookings.length - 1 ? hp(16) : 0,
+                  },
+                ]}>
+                <View
+                  style={{
+                    height: contentHeight,
+                  }}>
+                  <View
+                    style={[
+                      theme.flexDirectionColumn,
+                      theme.justifyContentCenter,
+                      theme.paddingBottom8,
+                      theme.paddingLeft8,
+                      theme.paddingRight8,
+                      theme.paddingTop8,
+                      theme.positionAbsolute,
+                      // eslint-disable-next-line react-native/no-inline-styles
+                      {
+                        backgroundColor: colors.neutral100,
+                        borderBottomLeftRadius: wp(6),
+                        borderBottomRightRadius: wp(6),
+                        zIndex: 9000,
+                        left: wp(8),
+                      },
+                    ]}>
+                    <Text
+                      style={[
+                        theme.textAlignCenter,
+                        theme.commonFontSize13,
+                        theme.lineHeight18,
+                        theme.fontsPrimaryRegular,
+                        {color: colors.black},
+                      ]}>
+                      {item.createdAt.toFormat('MMM')}
+                    </Text>
+                    <Text
+                      style={[
+                        theme.textAlignCenter,
+                        theme.commonFontSize16,
+                        theme.lineHeight19,
+                        theme.fontsPrimaryRegular,
+                        {color: colors.black},
+                      ]}>
+                      {item.createdAt.toFormat('dd')}
+                    </Text>
+                  </View>
+                  <BlastedImage
+                    style={{
+                      borderTopLeftRadius: wp(8),
+                      borderBottomLeftRadius: wp(8),
+                    }}
+                    width={wp(104)}
+                    height={contentHeight}
+                    source={{
+                      uri: item.image,
+                    }}
+                    resizeMode="cover"
+                  />
+                </View>
+                <View
+                  style={[
+                    theme.flexDirectionColumn,
+                    theme.paddingBottom16,
+                    theme.paddingTop16,
+                    theme.paddingLeft12,
+                    theme.paddingRight12,
+                    theme.flex1,
+                  ]}
+                  onLayout={event => {
+                    const {height} = event.nativeEvent.layout;
+                    setContentHeight(height);
+                  }}>
+                  <Text
+                    style={[
+                      theme.commonFontSize16,
+                      theme.lineHeight19,
+                      theme.fontsPrimarySemiBold,
+                      {color: colors.bulletinTitleTextColor},
+                    ]}
+                    numberOfLines={2}>
+                    {`${item.title}\n`}
+                  </Text>
+                  <View
+                    style={[
+                      theme.borderRadius4,
+                      theme.paddingBottom6,
+                      theme.paddingTop6,
+                      theme.paddingLeft8,
+                      theme.paddingRight8,
+                      theme.alignSelfBaseline,
+                      theme.marginTop12,
+                      theme.marginBottom8,
+                      {backgroundColor: colors.amenityCardTagColor},
+                    ]}>
+                    <Text
+                      numberOfLines={1}
+                      style={[
+                        theme.commonFontSize13,
+                        theme.lineHeight18,
+                        theme.fontsPrimaryMedium,
+                        {color: colors.amenityCardTagTextColor},
+                      ]}>
+                      {item.category}
+                    </Text>
+                  </View>
+                  <View
+                    style={[
+                      theme.marginBottom8,
+                      theme.flexDirectionRow,
+                      theme.alignItemsCenter,
+                    ]}>
+                    <ClockIcon color={colors.amenityCardIconColor} />
+                    <Text
+                      style={[
+                        theme.marginLeft6,
+                        theme.commonFontSize13,
+                        theme.lineHeight18,
+                        theme.fontsPrimaryRegular,
+                        {color: colors.amenityCardIconColor},
+                      ]}
+                      numberOfLines={1}>
+                      {item.time}
+                    </Text>
+                  </View>
+                  <View
+                    style={[theme.flexDirectionRow, theme.alignItemsCenter]}>
+                    <LocationIcon color={colors.amenityCardIconColor} />
+                    <Text
+                      style={[
+                        theme.marginLeft6,
+                        theme.commonFontSize13,
+                        theme.lineHeight18,
+                        theme.fontsPrimaryRegular,
+                        {color: colors.amenityCardIconColor},
+                      ]}
+                      numberOfLines={1}>
+                      {item.location}
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            );
+          }}
+        />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView
@@ -776,6 +1003,7 @@ function HomeScreen() {
         {buildHightlights()}
         {buildQuickLinks()}
         {buildNews()}
+        {buildAmenityBookings()}
       </ScrollView>
     </View>
   );

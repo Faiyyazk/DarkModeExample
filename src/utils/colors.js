@@ -15,6 +15,8 @@ const commonColors = {
   qrColor: '#00ADD7',
   newsCardTagColor: '#3FADFF33',
   redColor: '#E63E30',
+  amenityCardTagColor: '#FACA151A',
+  black: '#000000',
 };
 
 const light = {
@@ -37,6 +39,9 @@ const light = {
   bulletinDateTextColor: '#18212B',
   bulletinTitleTextColor: '#18212B',
   bulletinDescriptionTextColor: '#202D3C',
+  amenityCardBackground: '#FFFFFF',
+  amenityCardTagTextColor: '#BC8701',
+  amenityCardIconColor: '#6C7886',
   ...commonColors,
 };
 
@@ -60,6 +65,9 @@ const dark = {
   bulletinDateTextColor: '#C4C4C4',
   bulletinTitleTextColor: '#FBFBFB',
   bulletinDescriptionTextColor: '#F5F6F6',
+  amenityCardBackground: '#202D3C',
+  amenityCardTagTextColor: '#FACA15',
+  amenityCardIconColor: '#C4C4C4',
   ...commonColors,
 };
 
