@@ -36,6 +36,13 @@ import {theme} from '../utils/theme';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import HighlightTabBar from '../components/tabbar/HighlightTabBar';
 import {DateTime} from 'luxon';
+import {
+  FormSvg,
+  LeasingContactSvg,
+  ManualSvg,
+  SafetySvg,
+} from '../components/icons/svgs';
+import SvgUri from 'react-native-svg-uri';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -144,6 +151,33 @@ function HomeScreen() {
       category: 'closed',
       location: 'West Concourse',
       createdAt: DateTime.now(),
+    },
+  ];
+
+  const resources = [
+    {
+      id: 1,
+      icon: LeasingContactSvg,
+      title: 'Leasing Contacts',
+      type: 'contacts',
+    },
+    {
+      id: 2,
+      icon: SafetySvg,
+      title: 'Safety and Security',
+      type: 'safety',
+    },
+    {
+      id: 3,
+      icon: FormSvg,
+      title: 'Tenant Forms',
+      type: 'forms',
+    },
+    {
+      id: 4,
+      icon: ManualSvg,
+      title: 'Manuals',
+      type: 'manuals',
     },
   ];
 
@@ -782,6 +816,7 @@ function HomeScreen() {
                   theme.borderRadius8,
                   theme.flexDirectionRow,
                   theme.alignItemsCenter,
+                  // eslint-disable-next-line react-native/no-inline-styles
                   {
                     backgroundColor: colors.amenityCardBackground,
                     marginBottom:
@@ -1100,6 +1135,72 @@ function HomeScreen() {
     );
   }
 
+  function buildResources() {
+    return (
+      <View style={[theme.paddingTop32, theme.flexDirectionColumn]}>
+        <View
+          style={[
+            theme.flexDirectionRow,
+            theme.alignItemsCenter,
+            theme.justifyContentSpaceBetween,
+            theme.marginLeft16,
+            theme.marginRight16,
+          ]}>
+          <Text
+            style={{
+              color: colors.neutral900,
+              ...theme.commonFontSize20,
+              ...theme.lineHeight24,
+              ...theme.fontsPrimarySemiBold,
+            }}>
+            Building Resources
+          </Text>
+        </View>
+        <FlatList
+          data={resources}
+          contentContainerStyle={[
+            theme.marginTop16,
+            theme.paddingLeft16,
+            theme.paddingRight16,
+          ]}
+          keyExtractor={item => item.id}
+          renderItem={({item, index}) => {
+            return (
+              <View
+                style={[
+                  theme.flexDirectionRow,
+                  theme.alignItemsCenter,
+                  theme.borderRadius8,
+                  theme.paddingLeft16,
+                  theme.paddingRight16,
+                  theme.paddingTop14,
+                  theme.paddingBottom14,
+                  // eslint-disable-next-line react-native/no-inline-styles
+                  {
+                    marginBottom: index !== resources.length - 1 ? hp(12) : 0,
+                    backgroundColor: colors.newsActiveCardBackground,
+                  },
+                ]}>
+                <SvgUri width={wp(28)} height={wp(28)} svgXmlData={item.icon} />
+                <Text
+                  style={[
+                    theme.marginLeft16,
+                    theme.commonFontSize16,
+                    theme.lineHeight22,
+                    theme.fontsPrimaryMedium,
+                    theme.flex1,
+                    {color: colors.quickLinkTextColor},
+                  ]}>
+                  {item.title}
+                </Text>
+              </View>
+            );
+          }}
+        />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView
@@ -1202,6 +1303,7 @@ function HomeScreen() {
         {buildNews()}
         {buildAmenityBookings()}
         {buildDirectory()}
+        {buildResources()}
       </ScrollView>
     </View>
   );
