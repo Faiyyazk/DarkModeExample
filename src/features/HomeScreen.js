@@ -565,6 +565,7 @@ function HomeScreen() {
                   theme.paddingRight12,
                   theme.paddingTop12,
                   theme.paddingBottom12,
+                  theme.borderRadius8,
                   // eslint-disable-next-line react-native/no-inline-styles
                   {
                     marginLeft: index === 0 ? wp(16) : 0,
