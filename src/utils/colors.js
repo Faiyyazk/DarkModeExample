@@ -9,7 +9,6 @@ const commonColors = {
   brand600: '#0081A3',
   bgTimeOverlay: '#12181ECC',
   brandSecondary: '#00954C',
-  orange: '#FF7A00',
   textColor: '#1E1E1E',
   eventShareButton: '#96BAC33D',
   qrColor: '#00ADD7',
@@ -17,6 +16,12 @@ const commonColors = {
   redColor: '#E63E30',
   amenityCardTagColor: '#FACA151A',
   black: '#000000',
+  directoryOpenStatus: '#0E9F6E',
+  directoryOpenStatusText: '#03543F',
+  directoryClosingSoonStatus: '#FF7A00',
+  directoryClosingSoonStatusText: '#FF7A00',
+  directoryClosedStatus: '#E53E2F',
+  directoryClosedStatusText: '#A9343A',
 };
 
 const light = {
@@ -42,6 +47,8 @@ const light = {
   amenityCardBackground: '#FFFFFF',
   amenityCardTagTextColor: '#BC8701',
   amenityCardIconColor: '#6C7886',
+  directoryCardBackground: '#FFFFFF',
+  directoryLocationTextColor: '#6C7886',
   ...commonColors,
 };
 
@@ -68,6 +75,8 @@ const dark = {
   amenityCardBackground: '#202D3C',
   amenityCardTagTextColor: '#FACA15',
   amenityCardIconColor: '#C4C4C4',
+  directoryCardBackground: '#12181E',
+  directoryLocationTextColor: '#EAF4F4',
   ...commonColors,
 };
 

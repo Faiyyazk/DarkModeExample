@@ -117,6 +117,36 @@ function HomeScreen() {
     },
   ];
 
+  const directories = [
+    {
+      id: 1,
+      image:
+        'https://images.unsplash.com/photo-1720048171080-78849cff8b19?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90oy1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      title: 'Buster Pizza',
+      category: 'open',
+      location: 'West Concourse',
+      createdAt: DateTime.now(),
+    },
+    {
+      id: 2,
+      image:
+        'https://images.unsplash.com/photo-1720048171080-78849cff8b19?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90oy1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      title: 'The Hanoian',
+      category: 'closingSoon',
+      location: 'West Concourse',
+      createdAt: DateTime.now(),
+    },
+    {
+      id: 3,
+      image:
+        'https://images.unsplash.com/photo-1720048171080-78849cff8b19?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90oy1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      title: 'Kyoto Sushi',
+      category: 'closed',
+      location: 'West Concourse',
+      createdAt: DateTime.now(),
+    },
+  ];
+
   const onViewableItemsChanged = useRef(({viewableItems}) => {
     if (viewableItems.length > 0) {
       setCurrentIndex(viewableItems[0].index);
@@ -903,6 +933,173 @@ function HomeScreen() {
     );
   }
 
+  function buildDirectory() {
+    return (
+      <View style={[theme.paddingTop32, theme.flexDirectionColumn]}>
+        <View
+          style={[
+            theme.flexDirectionRow,
+            theme.alignItemsCenter,
+            theme.justifyContentSpaceBetween,
+            theme.marginLeft16,
+            theme.marginRight16,
+          ]}>
+          <Text
+            style={{
+              color: colors.neutral900,
+              ...theme.commonFontSize20,
+              ...theme.lineHeight24,
+              ...theme.fontsPrimarySemiBold,
+            }}>
+            Directory
+          </Text>
+          <TouchableOpacity
+            style={[theme.flexDirectionRow, theme.alignItemsCenter]}>
+            <Text
+              style={{
+                color: colors.brand500,
+                ...theme.commonFontSize14,
+                ...theme.lineHeight20,
+                ...theme.fontsPrimaryMedium,
+                ...theme.marginRight4,
+              }}>
+              Show All
+            </Text>
+            <ArrowRightIcon />
+          </TouchableOpacity>
+        </View>
+        <FlatList
+          data={directories}
+          contentContainerStyle={[theme.marginTop16]}
+          keyExtractor={item => item.id}
+          horizontal={true}
+          renderItem={({item, index}) => {
+            const statusCircleColor =
+              item.category === 'open'
+                ? colors.directoryOpenStatus
+                : item.category === 'closingSoon'
+                ? colors.directoryClosingSoonStatus
+                : colors.directoryClosedStatus;
+
+            const statusTextColor =
+              item.category === 'open'
+                ? colors.directoryOpenStatusText
+                : item.category === 'closingSoon'
+                ? colors.directoryClosingSoonStatusText
+                : colors.directoryClosedStatusText;
+
+            const status =
+              item.category === 'open'
+                ? 'Open'
+                : item.category === 'closingSoon'
+                ? 'Closing Soon'
+                : 'Closed';
+
+            return (
+              <View
+                style={[
+                  theme.borderRadius6,
+                  theme.flexDirectionColumn,
+                  // eslint-disable-next-line react-native/no-inline-styles
+                  {
+                    backgroundColor: colors.directoryCardBackground,
+                    marginLeft: index === 0 ? wp(12) : wp(10),
+                    marginRight: index === directories.length - 1 ? wp(12) : 0,
+                    width: wp(128),
+                  },
+                ]}>
+                <View
+                  style={{
+                    height: hp(100),
+                  }}>
+                  <View
+                    style={[
+                      theme.flexDirectionRow,
+                      theme.alignItemsCenter,
+                      theme.paddingBottom4,
+                      theme.paddingLeft8,
+                      theme.paddingRight8,
+                      theme.paddingTop4,
+                      theme.positionAbsolute,
+                      // eslint-disable-next-line react-native/no-inline-styles
+                      {
+                        backgroundColor: colors.neutral100,
+                        borderRadius: wp(99),
+                        zIndex: 9000,
+                        left: wp(8),
+                        top: hp(8),
+                      },
+                    ]}>
+                    <View
+                      style={{
+                        width: wp(6),
+                        height: wp(6),
+                        borderRadius: wp(3),
+                        backgroundColor: statusCircleColor,
+                      }}
+                    />
+                    <Text
+                      style={[
+                        theme.commonFontSize13,
+                        theme.lineHeight20,
+                        theme.fontsPrimaryMedium,
+                        theme.marginLeft4,
+                        {color: statusTextColor},
+                      ]}>
+                      {status}
+                    </Text>
+                  </View>
+                  <BlastedImage
+                    style={{
+                      borderTopLeftRadius: wp(6),
+                      borderBottomLeftRadius: wp(6),
+                    }}
+                    width={wp(128)}
+                    height={hp(100)}
+                    source={{
+                      uri: item.image,
+                    }}
+                    resizeMode="cover"
+                  />
+                </View>
+                <View
+                  style={[
+                    theme.flexDirectionColumn,
+                    theme.marginTop12,
+                    theme.marginBottom12,
+                    theme.marginLeft8,
+                    theme.marginRight8,
+                  ]}>
+                  <Text
+                    style={[
+                      theme.commonFontSize16,
+                      theme.marginBottom8,
+                      theme.lineHeight19,
+                      theme.fontsPrimarySemiBold,
+                      {color: colors.bulletinTitleTextColor},
+                    ]}
+                    numberOfLines={1}>
+                    {item.title}
+                  </Text>
+                  <Text
+                    style={[
+                      theme.commonFontSize13,
+                      theme.lineHeight18,
+                      theme.fontsPrimaryRegular,
+                      {color: colors.directoryLocationTextColor},
+                    ]}
+                    numberOfLines={1}>
+                    {item.location}
+                  </Text>
+                </View>
+              </View>
+            );
+          }}
+        />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView
@@ -1004,6 +1201,7 @@ function HomeScreen() {
         {buildQuickLinks()}
         {buildNews()}
         {buildAmenityBookings()}
+        {buildDirectory()}
       </ScrollView>
     </View>
   );

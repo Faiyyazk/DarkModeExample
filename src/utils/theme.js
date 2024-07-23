@@ -33,6 +33,14 @@ export const theme = {
     paddingTop: hp(32),
   },
 
+  paddingTop4: {
+    paddingTop: hp(4),
+  },
+
+  paddingBottom4: {
+    paddingBottom: hp(4),
+  },
+
   paddingTop44: {
     paddingTop: hp(44),
   },
