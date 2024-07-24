@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {StatusBar, useColorScheme} from 'react-native';
+import {Platform, StatusBar, useColorScheme} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 
@@ -10,8 +10,10 @@ function App() {
   const colorScheme = useColorScheme();
 
   useEffect(() => {
-    StatusBar.setBackgroundColor('transparent');
-    StatusBar.setTranslucent(true);
+    if (Platform.OS === 'android') {
+      StatusBar.setBackgroundColor('transparent');
+      StatusBar.setTranslucent(true);
+    }
   }, []);
 
   return (

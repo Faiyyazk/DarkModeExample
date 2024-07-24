@@ -33,8 +33,6 @@ import {
 } from '../components/icons/icons';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {theme} from '../utils/theme';
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import HighlightTabBar from '../components/tabbar/HighlightTabBar';
 import {DateTime} from 'luxon';
 import {
   FormSvg,
@@ -43,8 +41,6 @@ import {
   SafetySvg,
 } from '../components/icons/svgs';
 import SvgUri from 'react-native-svg-uri';
-
-const Tab = createMaterialTopTabNavigator();
 
 const baseWidth = 390;
 const baseHeight = 106;
@@ -55,6 +51,7 @@ function HomeScreen() {
   const {dark, colors} = useTheme();
   const insets = useSafeAreaInsets();
   const [contentHeight, setContentHeight] = useState(0);
+  const [selectedTab, setSelectedTab] = useState('Events');
 
   const events = [
     {
@@ -191,7 +188,7 @@ function HomeScreen() {
     itemVisiblePercentThreshold: 100, // Trigger onViewableItemsChanged when 100% of the item is visible
   };
 
-  function buildEventsIcon({focused}) {
+  function buildEventsIcon(focused) {
     return (
       <EventsIcon
         color={
@@ -205,7 +202,7 @@ function HomeScreen() {
     );
   }
 
-  function buildContestsIcon({focused}) {
+  function buildContestsIcon(focused) {
     return (
       <ContestsIcon
         color={
@@ -219,7 +216,7 @@ function HomeScreen() {
     );
   }
 
-  function buildPromotionsIcon({focused}) {
+  function buildPromotionsIcon(focused) {
     return (
       <PromotionsIcon
         color={
@@ -241,10 +238,14 @@ function HomeScreen() {
           theme.flexDirectionColumn,
           theme.marginLeft16,
           theme.borderRadius8,
+          theme.shadowView,
+          // eslint-disable-next-line react-native/no-inline-styles
           {
             width: wp(354),
             marginRight: wp(isLastChild ? 16 : 0),
             backgroundColor: colors.highlightCardBackground,
+            borderWidth: 1,
+            borderColor: colors.highlightCardBorderColor,
           },
         ]}>
         <View>
@@ -409,11 +410,55 @@ function HomeScreen() {
         horizontal
         contentContainerStyle={{
           ...theme.marginTop16,
+          ...theme.paddingBottom32,
         }}
         showsHorizontalScrollIndicator={false}
         data={events}
         renderItem={({item, index}) => renderItem(item, index)}
       />
+    );
+  }
+
+  function buildHighlightTabPill(isFocused, index, renderIcon, label) {
+    return (
+      <TouchableOpacity
+        onPress={() => {
+          if (selectedTab !== label) {
+            setSelectedTab(label);
+          }
+        }}
+        style={[
+          theme.flexDirectionRow,
+          theme.alignItemsCenter,
+          styles.tabBar,
+          // eslint-disable-next-line react-native/no-inline-styles
+          {
+            backgroundColor: isFocused ? colors.brand600 : 'transparent',
+            borderColor: isFocused
+              ? colors.brand600
+              : dark
+              ? colors.neutral200
+              : colors.brand600,
+            borderWidth: 1,
+            marginLeft: index === 0 ? wp(16) : wp(6),
+            marginRight: index === 2 ? wp(16) : 0,
+          },
+        ]}>
+        {renderIcon && <View style={theme.marginRight8}>{renderIcon}</View>}
+        <Text
+          style={[
+            styles.tabBarLabel,
+            {
+              color: isFocused
+                ? colors.neutral100
+                : dark
+                ? colors.neutral200
+                : colors.neutral800,
+            },
+          ]}>
+          {label}
+        </Text>
+      </TouchableOpacity>
     );
   }
 
@@ -432,42 +477,36 @@ function HomeScreen() {
           }}>
           Highlights this Week
         </Text>
-        <Tab.Navigator
-          swipeEnabled={false}
-          initialRouteName={'Events'}
-          tabBar={HighlightTabBar}>
-          <Tab.Screen
-            options={{
-              tabBarLabel: 'Events',
-              tabBarIcon: buildEventsIcon,
-            }}
-            name="Events"
-            children={() => buildEvents()}
-          />
-          <Tab.Screen
-            options={{
-              tabBarLabel: 'Contests',
-              tabBarIcon: buildContestsIcon,
-            }}
-            name="Contests"
-            children={() => buildEvents()}
-          />
-          <Tab.Screen
-            options={{
-              tabBarLabel: 'Promotions',
-              tabBarIcon: buildPromotionsIcon,
-            }}
-            name="Promotions"
-            children={() => buildEvents()}
-          />
-        </Tab.Navigator>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          {buildHighlightTabPill(
+            selectedTab === 'Events',
+            0,
+            buildEventsIcon(selectedTab === 'Events'),
+            'Events',
+          )}
+          {buildHighlightTabPill(
+            selectedTab === 'Contests',
+            1,
+            buildContestsIcon(selectedTab === 'Contests'),
+            'Contests',
+          )}
+          {buildHighlightTabPill(
+            selectedTab === 'Promotions',
+            2,
+            buildPromotionsIcon(selectedTab === 'Promotions'),
+            'Promotions',
+          )}
+        </ScrollView>
+        {selectedTab === 'Events' && buildEvents()}
+        {selectedTab === 'Contests' && buildEvents()}
+        {selectedTab === 'Promotions' && buildEvents()}
       </View>
     );
   }
 
   function buildQuickLinks() {
     return (
-      <View style={[theme.paddingTop32, theme.flexDirectionColumn]}>
+      <View style={[theme.flexDirectionColumn]}>
         <Text
           style={{
             color: colors.neutral900,
@@ -497,6 +536,7 @@ function HomeScreen() {
                 theme.paddingRight16,
                 theme.paddingTop14,
                 theme.paddingBottom14,
+                theme.shadowView,
                 {backgroundColor: colors.quickLinkBackground},
               ]}>
               <BuildingIcon width={28} height={28} color={colors.qrColor} />
@@ -523,6 +563,7 @@ function HomeScreen() {
                 theme.paddingRight16,
                 theme.paddingTop14,
                 theme.paddingBottom14,
+                theme.shadowView,
                 {backgroundColor: colors.quickLinkBackground},
               ]}>
               <AmenityIcon color={colors.qrColor} />
@@ -557,6 +598,7 @@ function HomeScreen() {
                 theme.paddingRight16,
                 theme.paddingTop14,
                 theme.paddingBottom14,
+                theme.shadowView,
                 {backgroundColor: colors.quickLinkBackground},
               ]}>
               <RetailersIcon color={colors.qrColor} />
@@ -583,6 +625,7 @@ function HomeScreen() {
                 theme.paddingRight16,
                 theme.paddingTop14,
                 theme.paddingBottom14,
+                theme.shadowView,
                 {backgroundColor: colors.quickLinkBackground},
               ]}>
               <DigitalFormsIcon color={colors.qrColor} />
@@ -643,7 +686,7 @@ function HomeScreen() {
           ref={flatListRef}
           horizontal
           data={data}
-          contentContainerStyle={[theme.marginTop16]}
+          contentContainerStyle={[theme.marginTop16, theme.paddingBottom32]}
           keyExtractor={item => item.toString()}
           renderItem={({item, index}) => {
             return (
@@ -656,6 +699,7 @@ function HomeScreen() {
                   theme.paddingTop12,
                   theme.paddingBottom12,
                   theme.borderRadius8,
+                  theme.shadowView,
                   // eslint-disable-next-line react-native/no-inline-styles
                   {
                     marginLeft: index === 0 ? wp(16) : 0,
@@ -768,7 +812,7 @@ function HomeScreen() {
 
   function buildAmenityBookings() {
     return (
-      <View style={[theme.paddingTop32, theme.flexDirectionColumn]}>
+      <View style={[theme.flexDirectionColumn]}>
         <View
           style={[
             theme.flexDirectionRow,
@@ -807,6 +851,7 @@ function HomeScreen() {
             theme.marginTop16,
             theme.paddingLeft16,
             theme.paddingRight16,
+            theme.paddingBottom32,
           ]}
           keyExtractor={item => item.id}
           renderItem={({item, index}) => {
@@ -816,6 +861,7 @@ function HomeScreen() {
                   theme.borderRadius8,
                   theme.flexDirectionRow,
                   theme.alignItemsCenter,
+                  theme.shadowView,
                   // eslint-disable-next-line react-native/no-inline-styles
                   {
                     backgroundColor: colors.amenityCardBackground,
@@ -890,7 +936,9 @@ function HomeScreen() {
                   ]}
                   onLayout={event => {
                     const {height} = event.nativeEvent.layout;
-                    setContentHeight(height);
+                    if (height > contentHeight) {
+                      setContentHeight(height);
+                    }
                   }}>
                   <Text
                     style={[
@@ -970,7 +1018,7 @@ function HomeScreen() {
 
   function buildDirectory() {
     return (
-      <View style={[theme.paddingTop32, theme.flexDirectionColumn]}>
+      <View style={[theme.flexDirectionColumn]}>
         <View
           style={[
             theme.flexDirectionRow,
@@ -1005,7 +1053,7 @@ function HomeScreen() {
         </View>
         <FlatList
           data={directories}
-          contentContainerStyle={[theme.marginTop16]}
+          contentContainerStyle={[theme.marginTop16, theme.paddingBottom32]}
           keyExtractor={item => item.id}
           horizontal={true}
           renderItem={({item, index}) => {
@@ -1035,6 +1083,7 @@ function HomeScreen() {
                 style={[
                   theme.borderRadius6,
                   theme.flexDirectionColumn,
+                  theme.shadowView,
                   // eslint-disable-next-line react-native/no-inline-styles
                   {
                     backgroundColor: colors.directoryCardBackground,
@@ -1137,7 +1186,7 @@ function HomeScreen() {
 
   function buildResources() {
     return (
-      <View style={[theme.paddingTop32, theme.flexDirectionColumn]}>
+      <View style={[theme.flexDirectionColumn]}>
         <View
           style={[
             theme.flexDirectionRow,
@@ -1162,6 +1211,7 @@ function HomeScreen() {
             theme.marginTop16,
             theme.paddingLeft16,
             theme.paddingRight16,
+            theme.paddingBottom16,
           ]}
           keyExtractor={item => item.id}
           renderItem={({item, index}) => {
@@ -1175,6 +1225,7 @@ function HomeScreen() {
                   theme.paddingRight16,
                   theme.paddingTop14,
                   theme.paddingBottom14,
+                  theme.shadowView,
                   // eslint-disable-next-line react-native/no-inline-styles
                   {
                     marginBottom: index !== resources.length - 1 ? hp(12) : 0,
@@ -1204,7 +1255,7 @@ function HomeScreen() {
   return (
     <View style={styles.container}>
       <ScrollView
-        contentContainerStyle={{paddingBottom: height + 38}}
+        contentContainerStyle={{paddingBottom: height + 12}}
         showsVerticalScrollIndicator={false}>
         <View style={styles.headerContainer}>
           <BlastedImage
@@ -1365,6 +1416,18 @@ const styles = StyleSheet.create({
   container: {
     ...theme.flex1,
     ...theme.flexDirectionColumn,
+  },
+  tabBar: {
+    borderRadius: wp(20),
+    ...theme.paddingLeft16,
+    ...theme.paddingRight14,
+    ...theme.paddingTop11,
+    ...theme.paddingBottom11,
+  },
+  tabBarLabel: {
+    ...theme.fontsPrimaryMedium,
+    ...theme.commonFontSize14,
+    ...theme.lineHeight20,
   },
 });
 

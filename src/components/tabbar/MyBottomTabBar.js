@@ -104,7 +104,12 @@ export default function MyBottomTabBar({state, navigation}) {
   }
 
   return (
-    <View style={[styles.bgTransparent, {height: height}]}>
+    <View
+      style={[
+        styles.bgTransparent,
+        theme.bottomBarShadowView,
+        {height: height},
+      ]}>
       <View style={[theme.flexDirectionRow, styles.container]}>
         {state.routes.map((route, index) => {
           const isFocused = state.index === index;

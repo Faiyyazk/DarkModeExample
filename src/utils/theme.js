@@ -328,4 +328,26 @@ export const theme = {
   textAlignCenter: {
     textAlign: 'center',
   },
+
+  shadowView: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.37,
+    shadowRadius: 7.49,
+    elevation: 9,
+  },
+
+  bottomBarShadowView: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.37,
+    shadowRadius: 7.49,
+    elevation: 9,
+  },
 };
